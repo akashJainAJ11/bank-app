@@ -4,7 +4,7 @@ export const Balance = () => {
     const[balance, setBalance] = useState(null)
     useEffect(() => {
         const fetchData = async () => {
-            await axios.get("http://localhost:3000/api/v1/user/account/balance")
+            await axios.get("https://bank-app-backend.vercel.app/api/v1/user/account/balance")
             .then(response => {
                 setBalance(response.data.balance)
             })

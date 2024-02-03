@@ -17,7 +17,7 @@ export const Appbar = () => {
     
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/api/v1/user/me");
+                const response = await axios.get("https://bank-app-backend.vercel.app/api/v1/user/me");
                 setFirstName(response.data.user.firstName);
             } catch (error) {
                 console.error("Error fetching data:", error);
