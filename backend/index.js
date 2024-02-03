@@ -5,12 +5,14 @@ const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
 
-mongoose.connect(DB_URL);
-const db  = mongoose.connection;
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error'));
-db.once('open', ()=> {
+db.once('open', () => {
     console.log('DB connected...');
-})
+});
 
 
 app.use(cors());
