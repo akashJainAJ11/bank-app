@@ -6,6 +6,11 @@
             "use": "@vercel/node"
         }
     ],
+    "env": {
+        "APP_PORT": "@app_port",
+        "DB_URL": "@db_url",
+        "JWT_SECRET": "@jwt_secret"
+      },
     "routes":[
         {
             "src": "/(.*)",
