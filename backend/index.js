@@ -1,6 +1,9 @@
 const express = require('express');
 const router = require('./routes');
-const { DB_URL, APP_PORT } = require('./config/index');
+// const { DB_URL, APP_PORT } = require('./config/index');
+const DB_URL = process.env.DB_URL
+const APP_PORT = process.env.APP_PORT
+
 const cors = require('cors');
 const app = express();
 const mongoose = require('mongoose');
