@@ -27,18 +27,18 @@ export const Users = ({ userid }) => {
         setSearch(e.target.value);
     }
 
+    const filteredUsers = users.filter(u => String(u._id) !== String(userid));
+
     return (
-        <>
-            <div className="font-bold mt-6 text-lg">Users</div>
-            <div className="my-2">
-                <input type="text" onChange={handleSearch} placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200" />
-            </div>
-            <div>
-                {users.map(user =>  String(user._id) !== String(userid)  && <User key={user._id} user={user} navigate={navigate} />)}
-                console.log(user._id);
-                console.log(userid);
-            </div>
-        </>
+    <>
+        <div className="font-bold mt-6 text-lg">Users</div>
+        <div className="my-2">
+        <input type="text" onChange={handleSearch} placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200" />
+        </div>
+        <div>
+        {filteredUsers.map(user => <User key={user._id} user={user} navigate={navigate} />)}
+        </div>
+    </>
     );
 }
 
