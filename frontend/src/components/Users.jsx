@@ -3,12 +3,13 @@ import { Button } from "./Button"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export const Users = () => {
+export const Users = ({userid}) => {
     // Replace with backend call
     const [users, setUsers] = useState([]);
+    const [search, setSearch]= useState('')
 
     useEffect(() => {
-        axios.get("https://bank-app-backend.vercel.app/api/v1/user/bulk")
+        axios.get(`https://bank-app-backend.vercel.app/api/v1/user/bulk?filter=${search}`)
             .then(response => {
                 setUsers(response.data.user)
             })
@@ -24,16 +25,19 @@ export const Users = () => {
             
     }, [])
 
+    const handleSearch = (e)=>{
+        setSearch(e.target.value)
+    }
 
     return <>
         <div className="font-bold mt-6 text-lg">
             Users
         </div>
         <div className="my-2">
-            <input type="text" placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200"></input>
+            <input type="text" onChange={handleSearch}  placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200"></input>
         </div>
         <div>
-            {users.map(user => <User user={user} />)}
+        {users.map((user)=> {return user._id!=userid && <User user={user}/>})}
         </div>
     </>
 }
