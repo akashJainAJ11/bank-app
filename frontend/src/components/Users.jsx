@@ -34,7 +34,7 @@ export const Users = ({ userid }) => {
                 <input type="text" onChange={handleSearch} placeholder="Search users..." className="w-full px-2 py-1 border rounded border-slate-200" />
             </div>
             <div>
-                {users.map(user => user._id !== userid && <User key={user._id} user={user} navigate={navigate} />)}
+                {users.map(user =>  String(user._id) !== String(userid)  && <User key={user._id} user={user} navigate={navigate} />)}
             </div>
         </>
     );
