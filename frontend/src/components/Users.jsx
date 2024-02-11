@@ -10,8 +10,8 @@ export const Users = ({ userid }) => {
     useEffect(() => {
         axios.get(`https://bank-app-backend.vercel.app/api/v1/user/bulk?filter=${search}`)
             .then(response => {
-                if (Array.isArray(response.data.users)) {
-                    setUsers(response.data.users);
+                if (Array.isArray(response.data.user)) {
+                    setUsers(response.data.user);
                 } else {
                     console.error("Invalid response format: ", response.data);
                 }
