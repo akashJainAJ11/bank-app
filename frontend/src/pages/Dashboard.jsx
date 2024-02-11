@@ -11,7 +11,7 @@ const GetUser = () => {
     useEffect(() => {
         try {
             axios
-                .get("https://bank-app-backend.vercel.app/api/v1/user/get", {
+                .get("https://bank-app-backend.vercel.app/api/v1/user/bulk", {
                     headers: {
                         Authorization: localStorage.getItem("token"),
                     },
